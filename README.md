@@ -60,11 +60,11 @@ Celem głównym klasy jest tworzenie pliku kodu kreskowego w przypadku wystąpie
 W naszej przestrzeni tabe tworzymy tabele niezbędne do wykonania dalszych czynności.
 
 ```sql
-    CREATE TABLE "TEST_TABLICY" 
-     (  
-        "KOD" VARCHAR2(20 BYTE), 
-        "IMG" BFILE
-     );
+CREATE TABLE "TEST_TABLICY" 
+ (  
+    "KOD" VARCHAR2(20 BYTE), 
+    "IMG" BFILE
+ );
 ```
 W polu KOD będziemy wprowadzać wartość numeryczną kodu EAN, natomiast w polu IMG automatycznie funkcje utworzą właściwy plik z kodem oraz udo-
 stępnią go aplikacjom klienta. Typ BFILE w polu stanowi wskaźnik do zewnętrznego pliku binarnego.
@@ -138,5 +138,10 @@ BEGIN
  END IF;
   END;
 END;
+```
+Utworzony trigger właczmy poleceniem:
+
+```sql
+ALTER TRIGGER TGR_BIU_TEST_TABLICY ENABLE;
 ```
 
