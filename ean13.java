@@ -1,4 +1,11 @@
-﻿import java.awt.Color;
+﻿/**
+ * Copyright 2012 Grzegorz Oleksy.
+ * Zezwala się na używanie, kopiowanie, modyfikowanie i dystrybuowanie tego oprogramowania, 
+ * pod warunkiem zachowania powyższej informacji o prawach autorskich 
+ * i niniejszej informacji o zezwoleniu.
+ */
+
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
