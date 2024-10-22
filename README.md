@@ -145,3 +145,9 @@ Utworzony trigger właczmy poleceniem:
 ALTER TRIGGER TGR_BIU_TEST_TABLICY ENABLE;
 ```
 
+Testowo sprawdzamy czy wytworzyły się zbiory w plikach:
+```sql
+INSERT INTO TEST_TABLICY (KOD) VALUES ('8594008879918')
+INSERT INTO TEST_TABLICY (KOD) VALUES ('9001378610199')
+INSERT INTO TEST_TABLICY (KOD) VALUES ('4008110296364')
+```
