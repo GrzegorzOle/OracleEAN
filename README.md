@@ -13,6 +13,8 @@ wewnętrznych pasków rozdzielających sekwencję w postaci 01010
 liczb 8-13 kodowanych prawostronnie reprezentowanych przez 7 bitowe sekwencje
 3 bitowej sekwencji końca kodu w postaci 101.
 
+Kodowanie pierszych siedmiu znaków w systemie
+
 |       | Kodowanie lewostronne | Kodowanie lewostronne | Kodowanie    |
 | Cyfra | nieparzyste           | parzyste              | prawostronne |
 |-------|-----------------------|-----------------------|--------------|
@@ -26,6 +28,27 @@ liczb 8-13 kodowanych prawostronnie reprezentowanych przez 7 bitowe sekwencje
 | 7     |0111011                | 0010001               | 1000100      |
 | 8     |0110111                | 0001001               | 1001000      |
 | 9     |0001011                | 0010111               | 1110100      |
+
+Kolejne liczby kod EAN 13 
+
+| Wartość      |   |   |   |   |   |   |
+| Pierwszej    |   |   |   |   |   |   |
+| Cyfry        | 2 | 3 | 4 | 5 | 6 | 7 |
+|--------------|---|---|---|---|---|---|
+| 0            | N | N | N | N | N | N |
+| 1            | N | N | P | N | P | N |
+| 2            | N | N | P | N | P | P |
+| 3            | N | N | P | P | P | N |
+| 4            | N | P | N | N | P | P |
+| 5            | N | P | P | N | N | P |
+| 6            | N | P | P | P | N | N |
+| 7            | N | P | N | P | N | P |
+| 8            | N | P | N | P | P | N |
+| 9            | N | P | P | N | P | N |
+
+Klasa tworzy plik graficzny dla wprowadzonego w linii parametrów kodu numerycznego oraz ścieżki podanej jako parametr klasy.
+Zaproponowałem typ PNG, który z racji swojego rozmiaru będzie szybko transmitowany i otwierany, choć nie każda aplikacja klienta ma obsługę tego rodzaju grafiki.
+
 
 ```
     c:\java
