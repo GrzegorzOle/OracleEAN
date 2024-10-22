@@ -13,6 +13,7 @@ wewnętrznych pasków rozdzielających sekwencję w postaci 01010
 liczb 8-13 kodowanych prawostronnie reprezentowanych przez 7 bitowe sekwencje
 3 bitowej sekwencji końca kodu w postaci 101.
 
+|-------|-----------------------|--------------|
 | Cyfra |Kodowanie lewostronne  |Kodowanie     |
 |-------|-----------------------|              |
 |       |nieparzyste |parzyste  |prawostronne  |
