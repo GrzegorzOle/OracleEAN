@@ -14,9 +14,9 @@ liczb 8-13 kodowanych prawostronnie reprezentowanych przez 7 bitowe sekwencje
 3 bitowej sekwencji końca kodu w postaci 101.
 
 |-------|-----------------------|--------------|
-| Cyfra |Kodowanie lewostronne  |Kodowanie     |
-|-------|------------|----------|              |
-|       |nieparzyste |parzyste  |prawostronne  |
+|       |Kodowanie lewostronne  |Kodowanie     |
+|       |------------|----------|              |
+| Cyfra |nieparzyste |parzyste  |prawostronne  |
 |-------|------------|----------|--------------|
 | 0     |0001101     | 0100111  | 1110010      |
 | 1     |0011001     | 0110011  | 1100110      |
