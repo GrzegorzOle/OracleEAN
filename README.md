@@ -59,7 +59,7 @@ W naszym przykładzie wykorzystuję środowisko Oracle 11g (choć funkcjonalnoś
 Celem głównym klasy jest tworzenie pliku kodu kreskowego w przypadku wystąpienia wartości, a wyzwalaczem w naszym przypadku ma być funkcja SQL w bazie danych ORACLE, więc należy przygotować środowisko bazy do dalszych działań.
 W naszej przestrzeni tabe tworzymy tabele niezbędne do wykonania dalszych czynności.
 
-```
+```sql
     CREATE TABLE "TEST_TABLICY" 
      (  
         "KOD" VARCHAR2(20 BYTE), 
@@ -96,7 +96,7 @@ Poza uprawnieniami systemowymi ważne jest również uzyskanie właściwych upra
 Jednak z uprawnieniami to nie wszystko, trzeba jeszcze nadać dla „schematu” użytkownika prawa dla uruchamiania klas JAVY z dostępem do zasobów plików
 serwera.
 Za pomocą SQLPlus z uprawnieniami SYSTEM ustawiamy uprawnienia.
-```
+```sql
 EXEC DBMS_JAVA.grant_permission('GRZEGORZ', 'java.io.FilePermission', '<<ALL FILES>>', 'read ,write, execute, delete');
 EXEC DBMS_JAVA.grant_permission('GRZEGORZ', 'SYS:java.lang.RuntimePermission', 'writeFileDescriptor', '');
 EXEC DBMS_JAVA.grant_permission('GRZEGORZ', 'SYS:java.lang.RuntimePermission', 'readFileDescriptor', '');
@@ -108,7 +108,35 @@ Po tych poleceniach w „schemacie” można uruchamiać „programy” JAVA zap
     create or replace PROCEDURE proc_gen_EAN13 (kodEAN VARCHAR2, sciezka VARCHAR2) AS language java `name 'ean13.generuj(java.lang.String,java.lang.String)';`
 ```
 Teraz za pomocą składni polecenia SQL możemy sprawdzić działanie naszej klasy:
-```
+```sql
     call PROC_GEN_EAN13 ('4008110296364','C:\java\exp\');
+```
+Wywołanie procedury powinno zakończyć się utworzeniem pliku w przykładowym katalogu składowania:
+```
+C:\java\exp\ 4008110296364.png
+```
+Naszym celem jest automatyczne uzupełnienie pola z grafiką właściwą zawartością w sposób automatyczny.
+Tworzymy trigger:
+
+```sql
+CREATE OR REPLACE TRIGGER TGR_BIU_TEST_TABLICY
+BEFORE INSERT OR UPDATE
+ON TEST_TABLICY
+REFERENCING NEW AS NEW OLD AS OLD
+FOR EACH ROW
+BEGIN
+  DECLARE PLIK# VARCHAR2(255);
+  BEGIN
+ IF :NEW.KOD IS NOT NULL THEN
+ BEGIN
+ BEGIN
+        PROC_GEN_EAN13(:NEW.KOD,'C:\\java\\exp\\');
+      END;
+      PLIK# := :NEW.KOD||'.png';
+ :NEW.IMG := BFILENAME('EAN13', PLIK#);
+ END;
+ END IF;
+  END;
+END;
 ```
 
