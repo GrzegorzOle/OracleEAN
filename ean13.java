@@ -82,7 +82,7 @@ public class ean13 {
     public static byte[] convertToByteArray(byte EAN13[])
     {
         /*
-         * Sprawdzamy czy kod moĹĽa wygenerowaÄ‡
+         * Sprawdzamy czy kod można wygenerować
          */
         if ((EAN13 == null) ||
                 (EAN13.length != 13) ||
@@ -134,10 +134,11 @@ public class ean13 {
         return cbars;
     }
 
+    /***
+     * Zasadnicza funkcja malowania paskó.
+     * @param g
+     */
     public static void paintEAN(Graphics g) {
-        /*
-         * Zasadnicza funkcja malowania pasków
-         */
         int length;
         Graphics2D gEAN = (Graphics2D) g;
 
@@ -175,7 +176,7 @@ public class ean13 {
     /**
      * Obliczenie sumy kontrolnej EAN13
      * Jedną z ważniejszych cech kodu EAN 13 jest samosprawdzalność
-     * Realizujemy ją… za pomocą wartości sumy kontrolnej.
+     * Realizujemy ją za pomocą wartości sumy kontrolnej.
      */
     public static boolean checkControlSum(byte EAN13[]) {
         int sum = 1 * EAN13[0] +
@@ -235,7 +236,7 @@ public class ean13 {
             }
         }
         else {
-            //W przypadku gdy nasza klasa mogłabyzwrócić zmienną z błędem
+            //W przypadku gdy nasza klasa mogłaby zwrócić zmienną z błędem
             System.out.println("Newłaściwy kod EAN");
         }
     }
