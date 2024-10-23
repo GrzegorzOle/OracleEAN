@@ -1,8 +1,5 @@
 ﻿/**
- * Copyright 2012 Grzegorz Oleksy.
- * Zezwala się na używanie, kopiowanie, modyfikowanie i dystrybuowanie tego oprogramowania, 
- * pod warunkiem zachowania powyższej informacji o prawach autorskich 
- * i niniejszej informacji o zezwoleniu.
+ * Copyright 2012 MIT Grzegorz Oleksy.
  */
 
 import java.awt.Color;
